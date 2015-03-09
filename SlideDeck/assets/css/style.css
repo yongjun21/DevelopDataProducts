@@ -1,0 +1,72 @@
+span {display: inline-block}
+
+sup {
+	vertical-align: super;
+	font-size: 60%
+}
+
+.tiltDown {
+	color: red;
+	-webkit-transform: rotate(20deg);
+    -moz-transform:    rotate(20deg);
+    -ms-transform:     rotate(20deg);
+    -o-transform:      rotate(20deg);
+    transform:         rotate(20deg);
+}
+
+.tiltUp {
+	color: red;
+	-webkit-transform: rotate(-50deg);
+    -moz-transform:    rotate(-50deg);
+    -ms-transform:     rotate(-50deg);
+    -o-transform:      rotate(-50deg);
+    transform:         rotate(-50deg);
+}
+
+#slide2-2 span {display: inline}
+
+#slide3-1 {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -1px;
+}
+
+#slide3-3 {text-align: center}
+
+#slide4-0 {width: 1280px}	
+#slide4-0.future {opacity: 1}
+#slide4-0.past {opacity: 1}
+
+.tourApp span {
+	font-size:36px; 
+	font-weight: bold;
+	color: red;
+	-webkit-transform: rotate(-15deg);
+    -moz-transform:    rotate(-15deg);
+    -ms-transform:     rotate(-15deg);
+    -o-transform:      rotate(-15deg);
+    transform:         rotate(-15deg);
+}
+
+.tourApp.step.future  {opacity: 0}
+.tourApp.step.past {opacity: 0}
+
+#slide4-6 {width: 1280px}
+#slide4-6 p {
+	font-size:24px; 
+	font-weight: bold;
+	color: red;
+	margin-left: 750px;
+	margin-bottom: 230px;
+}
+
+#slide4-7{width: 1280px}
+
+#slide4-8 {width: 1280px}
+#slide4-8 p {
+	font-size: 36px; 
+	color: red;
+	text-align: right;
+	margin-top: 600px;
+}
+#slide4-8 a {color: black}

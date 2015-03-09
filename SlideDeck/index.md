@@ -1,0 +1,119 @@
+---
+title       : Showcasing my Data Product
+subtitle    : My first try at Slidify
+author      : Yong Jun
+job         : 
+framework   : impressjs     # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+--- #slide1-0 x:-1000 y:-1600 scale:1.5
+
+**This is the "Hockey Stick Graph"**
+
+--- #slide1-1 x:-700 y:-1000 scale:2.5
+
+![plot of chunk mbh99](assets/fig/mbh99-1.png) 
+
+--- #slide1-2 y:-1300
+
+It was first presented in 1999 by [Mann, Bradley & Hughes](http://www.meteo.psu.edu/holocene/public_html/shared/research/old/mbh99.html) as evidence for man-made global warming in the ongoing climate debate. 
+
+--- #slide1-3 y:-900
+
+Despite the controversy surrounding reconstruction studies, we are not here to take any side in the argument. What we'll be doing today is to demostrate using this chart [Segmented Linear Regression](http://en.wikipedia.org/wiki/Segmented_regression).
+
+
+
+--- #slide2-0 x:1000 y:-400 scale:3 rot:90
+
+So let us get started!
+
+--- #slide2-1 x:1000 y:1200 rot:90
+
+The "<span class='tiltDown'>hockey</span> <span class='tiltUp'>stick</span>" is something that can be modelled using a
+
+--- #slide2-2 x:700 y:1200 z:-100 rot:90
+[Spline](http://en.wikipedia.org/wiki/Spline_%28mathematics%29) 
+<span style="font-size:0.7em">a <span style="color:blue">piece-wise defined</span> polynomial function satisfying <span style="color:blue">continuity</span> at all <span style="color:blue">breakpoints</span></span>
+
+--- #slide2-3 x:400 y:1200 z:-200 rot:90
+
+which in its simplest form is just two linear segments joined at one single knot point
+
+--- #slide2-4 y:1200 z:-300 rot:90
+
+as represented by this equation: 
+$$ Y_i = \beta_0 + \beta_1 X_i + \gamma_1 (X_i - \xi)_+ + \epsilon_i $$
+<span style="font-size:0.8em; float:right">where $\xi$ is a known knot point</span>
+
+
+
+--- #slide3-1 x:-1000 y:400
+
+<span style="font-size:48px; line-height:1.5">**Here's an implementation in _R_:**</span>
+```r
+# This is the code to reproduce the MBH99 hockey stick diagram shown earlier
+sourceURL <- paste("http://www.meteo.psu.edu/holocene/public_html",
+                   "/shared/research/ONLINE-PREPRINTS/Millennium",
+                   "/DATA/RECONS/nhem-recon.dat")
+dat <- read.table(sourceURL, col.names=c("year","temp"))
+dat <- transform(dat, splineTerm = (year - 1900) * (year > 1900))
+fit <- lm(temp~year+splineTerm, data=dat)
+with(dat,plot(year,temp))
+lines(dat$year, fit$fitted.values, col="red", lwd=3)
+```
+
+--- #slide3-2 x:-1000 y:1200
+
+So far so good?
+
+--- #slide3-3 x:-1000 y:3200 z:-1000 rot:-45 scale:0.1
+
+**??** _But what if we don't know_
+  
+_where's the knot point_ **??**
+
+--- #slide3-4 x:-1000 y:3200 scale:3 rot:-45
+
+No worries. Because an <span style="color:blue">App</span> has been created just to make things a little easier for you!
+
+
+
+--- #slide4-0 x:5000 y:1400 scale:5 rot:90
+
+<iframe src="https://yongjun21.shinyapps.io/DevelopDataProducts" width=1280px height=720px></iframe>
+
+--- .tourApp #slide4-1 x:6150 y:100 scale:2 rot:90
+
+<span style="margin-left:120px"><< first you load in your data</span>
+
+--- .tourApp #slide4-2 x:5800 y:100 scale:2 rot:90
+
+<span style="margin-left:30px"><< then select your Y</span>
+
+--- .tourApp #slide4-3 x:5380 y:100 scale:2 rot:90
+
+<span style="margin-left:30px"><< and your X...</span>
+
+--- .tourApp #slide4-4 x:4880 y:100 scale:2 rot:90
+
+<span style="margin-left:50px"><< use slider to adjust position of the kink</span>
+
+--- .tourApp #slide4-5 x:4350 y:100 scale:2 rot:90
+
+<span style="margin-left:100px"><< bottom slider gives X10 resolution!</span>
+
+--- .tourApp #slide4-6 x:5000 y:1400 scale:5 rot:90
+
+<< when R<sup>2</sup> is maximized, VOILA!!
+
+--- .tourApp #slide4-7 x:6000 y:1800 scale:2 rot:90
+
+<span style="margin-left:640px ;margin-bottom:350px"><< other tabs to explore here</span>
+
+--- .tourApp #slide4-8 x:5000 y:1400 scale:5 rot:90
+That's it. What are you waiting for? Click [here](https://yongjun21.shinyapps.io/DevelopDataProducts) to begin
