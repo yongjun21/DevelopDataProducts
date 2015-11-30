@@ -16,7 +16,7 @@ knit        : slidify::knit2slides
 
 --- #slide1-1 x:-700 y:-1000 scale:2.5
 
-![plot of chunk mbh99](assets/fig/mbh99-1.png) 
+![plot of chunk mbh99](assets/fig/mbh99.png) 
 
 --- #slide1-2 y:-1300
 
@@ -85,7 +85,7 @@ No worries. Because an <span style="color:blue">App</span> has been created just
 
 --- #slide4-0 x:5000 y:1400 scale:5 rot:90
 
-<iframe src="https://yongjun21.shinyapps.io/DevelopDataProducts" width=1280px height=720px></iframe>
+![screenshot](assets/img/screenshot.PNG)
 
 --- .tourApp #slide4-1 x:6150 y:100 scale:2 rot:90
 
